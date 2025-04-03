@@ -187,6 +187,7 @@ class ScanActivity : ComponentActivity() {
         devices: List<ScanResult>,
         onToggleScan: () -> Unit
     ) {
+        val context = LocalContext.current
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -221,7 +222,6 @@ class ScanActivity : ComponentActivity() {
                             .fillMaxWidth()
                             .padding(vertical = 4.dp)
                             .clickable {
-                                val context = LocalContext.current
                                 val intent = Intent(context, DeviceDetailActivity::class.java)
                                 intent.putExtra("device_address", device.device.address)
                                 context.startActivity(intent)
